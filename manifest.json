@@ -1,0 +1,17 @@
+{
+  "name": "Godzila Order Details",
+  "description": "Adds the date and time of your orders on Godzila's profile page",
+  "version": "1.0",
+  "manifest_version": 3,
+  "action": {
+    "default_icon": "godzila.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": ["activeTab", "scripting"],
+  "host_permissions": [
+    "https://godzila.bg/bg/profile",
+    "https://godzila.bg/en/profile"
+  ]
+}
