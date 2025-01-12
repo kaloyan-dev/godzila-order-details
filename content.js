@@ -17,7 +17,6 @@
     const $orders = document.querySelectorAll(".prev-order-item");
 
     ordersData.forEach((order, index) => {
-      const orderDate = order.order_datetime;
       const $orderItem = $orders[index];
       const $orderPrice = $orderItem.querySelector(
         ".prev-order-item__price.text-lg-end"
@@ -32,12 +31,22 @@
 
       const $orderDate = document.createElement("p");
       $orderDate.setAttribute("id", orderDateId);
-      $orderDate.setAttribute(
-        "style",
-        `text-align: right; margin-top: -50px; font-weight: semibold;`
-      );
+      $orderDate.setAttribute("style", `text-align: right; margin-top: -30px;`);
 
-      $orderDate.textContent = `${orderDate.replace(/-/g, "/")}`;
+      const orderDateTime = order.order_datetime;
+      const orderDateTimeSplit = orderDateTime.split(" ");
+      const orderDate = orderDateTimeSplit[0];
+      const orderTime = orderDateTimeSplit[1];
+
+      // The date comes in a YYYY/MM/DD format, so we reverse it
+      // and shorten the year to two digits
+      const orderDateText = orderDate
+        .split("-")
+        .reverse()
+        .join("/")
+        .replace(/(\d{2})(\d)/g, "$2");
+
+      $orderDate.innerHTML = `${orderDateText}<br />${orderTime}`;
       $orderPrice.insertAdjacentElement("afterend", $orderDate);
     });
   };
