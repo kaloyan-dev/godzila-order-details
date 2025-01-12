@@ -22,8 +22,16 @@
       const $orderPrice = $orderItem.querySelector(
         ".prev-order-item__price.text-lg-end"
       );
-      const $orderDate = document.createElement("p");
 
+      const orderDateId = `order-date-${index}`;
+
+      const $existingOrderDate = document.getElementById(orderDateId);
+      if ($existingOrderDate) {
+        $existingOrderDate.remove();
+      }
+
+      const $orderDate = document.createElement("p");
+      $orderDate.setAttribute("id", orderDateId);
       $orderDate.setAttribute(
         "style",
         `text-align: right; margin-top: -50px; font-weight: semibold;`
