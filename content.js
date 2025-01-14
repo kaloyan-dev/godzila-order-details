@@ -31,7 +31,10 @@
 
       const $orderDate = document.createElement("p");
       $orderDate.setAttribute("id", orderDateId);
-      $orderDate.setAttribute("style", `text-align: right; margin-top: -30px;`);
+      $orderDate.setAttribute(
+        "style",
+        `text-align: right; font-size: 14px; color: #aaa;`
+      );
 
       const orderDateTime = order.order_datetime;
       const orderDateTimeSplit = orderDateTime.split(" ");
@@ -47,7 +50,7 @@
         .replace(/(\d{2})(\d)/g, "$2");
 
       $orderDate.innerHTML = `${orderDateText}<br />${orderTime}`;
-      $orderPrice.insertAdjacentElement("afterend", $orderDate);
+      $orderPrice.appendChild($orderDate);
     });
   };
 
